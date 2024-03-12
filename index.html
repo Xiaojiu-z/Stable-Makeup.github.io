@@ -1,0 +1,98 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>SSR-Encoder</title>
+<link href="./assets/style.css" rel="stylesheet">
+<script type="text/javascript" src="./assets/jquery.mlens-1.0.min.js"></script> 
+<script type="text/javascript" src="./assets/jquery.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+
+<body>
+<div class="content">
+  <h1><strong>Stable-Makeup: When Real-World Makeup Transfer Meets Diffusion Model</strong></h1>
+  <p id="authors">
+  <span>Yuxuan Zhang,</span>
+  <span>Lifu Wei,</span>
+  <span>Qing Zhang,</span>
+  <span>Jiaming Liu,</span>
+  <span>Huaxia Li,</span> <br>
+  <span>Xu Tang,</span>
+  <span>Yao Hu,</span>
+  <span>Haibo Zhao</span>
+</p> <br>
+<div style="text-align: center;">
+  <span style="font-size: 24px">Shanghai Jiao Tong University, Xiaohongshu Inc., Peking University, Shenyang Institute of Automation Chinese Academy of Sciences, National University of Singapore
+</div>
+  <br>
+  <img src="./assets/teaser.jpg" class="teaser-gif" style="width:100%;"><br>
+  <h3 style="text-align:center; font-size: 16px;"><em>Our proposed framework, \textit{Stable-Makeup}, is a novel diffusion-based method for makeup transfer that can robustly transfer a diverse range of real-world makeup styles, from light to extremely heavy makeup.</em></h3>
+    <font size="+2">
+          <p style="text-align: center;">
+            <a href="https://arxiv.org/pdf/2312.16272.pdf" target="_blank">[Paper]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="https://ssr-encoder.github.io" target="_blank">[Code(Comming Soon)]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+    </font>
+</div>
+<div class="content">
+  <h2 style="text-align:center;">Abstract</h2>
+  <p>Current makeup transfer methods are limited to simple makeup styles, making them difficult to apply in real-world scenarios. In this paper, we introduce Stable-Makeup, a novel diffusion-based makeup transfer method capable of robustly transferring a wide range of real-world makeup, onto user-provided faces. Stable-Makeup is based on a pre-trained diffusion model and utilizes a Detail-Preserving (D-P) makeup encoder to encode makeup details. It also employs content and structural control modules to preserve the content and structural information of the source image. With the aid of our newly added makeup cross-attention layers in U-Net, we can accurately transfer the detailed makeup to the corresponding position in the source image. After content-structure decoupling training, Stable-Makeup can maintain content and the facial structure of the source image. Moreover, our method has demonstrated strong robustness and generalizability, making it applicable to various tasks such as cross-domain makeup transfer, makeup-guided text-to-image generation and so on. Extensive experiments have demonstrated that our approach delivers state-of-the-art (SOTA) results among existing makeup transfer methods and exhibits a highly promising with broad potential applications in various related fields.</p>
+</div>
+<div class="content">
+  <h2>Background</h2>
+  <p>As a significant computer vision task, makeup transfer has a wide range of applications, such as in the beauty industry or in virtual try-on systems, and enables the enhancement, modification, and transformation of facial features, achieving the desired effects of beautification, embellishment, and deformation. However, despite its conceptual straightforwardness, makeup transfer poses significant challenges when aiming for a seamless and authentic transformation across a wide range of makeup intensities and styles. However, current approaches fall short when confronted with the diversity of real-world makeup styles, especially when translating high-detailed and creative cosmetics, such as those found in cosplay or movie character imitations, onto real faces. This limitation not only restricts their applicability but also hinders their effectiveness in accurately capturing the essence of personalized and intricate makeup designs. Recognizing this gap, our research introduces Stable-Makeup, a novel approach leveraging diffusion-based methodologies to transcend the boundaries of existing makeup transfer methods.</p>
+  <br>
+</div>
+<div class="content">
+  <h2>Approach</h2>
+<p>Selective subject-driven image generation aims to generate target subjects in a reference image with high fidelity and creative editability, guided by the user's specific queries (text or mask). To tackle this, we propose our SSR-Encoder, a specialized framework designed to integrate with any custom diffusion model without necessitating test-time fine-tuning. Given a query text-image pair, the SSR-Encoder employs a token-to-patch aligner to highlight the selective regions in the reference image by the query. Meanwhile, it extracts fine-grained details of the subject through the detail-preserving subject encoder, projecting multi-scale visual embeddings via the token-to-patch aligner. Then, we adopt subject-conditioned generation to generate specific subjects with high fidelity and creative editability. </p>
+  <br>
+  <img class="summary-img" src="./assets/method.jpg" style="width:100%;"> <br>
+  <br>
+</div>
+<div class="content">
+  <h2>Results</h2>
+  <p>Results of SSR-Encoder in different generative capabilities. Our method supports two query modalities and is adaptable for a variety of tasks, including single- and multi-subject conditioned generation. Its versatility extends to integration with other customized models and compatibility with off-the-shelf ControlNets. </p>
+<img class="summary-img" src="./assets/images_01_7.jpg" style="width:100%;">
+</div>
+<div class="content">
+  <h2>Visual Comparison</h2>
+  <p>Visual comparison with current makeup transfer methods.</p>
+  <br>
+  <img class="summary-img" src="./assets/compare.jpg" style="width:100%;"> <br>
+</div>
+<div class="content">
+  <h2>More Applications</h2>
+  <p>Select different subject from a single image for re-contextualization.</p>
+  <br>
+  <img class="summary-img" src="./assets/sup_ms1.jpg" style="width:100%;"> <br>
+</div>
+
+</div>
+<div class="content">
+  <h2>BibTex</h2>
+  <code> @article{zhang2023ssr,<br>
+  &nbsp;&nbsp;title={Stable-Makeup: When Real-World Makeup Transfer Meets Diffusion Model},<br>
+  &nbsp;&nbsp;author={Yuxuan Zhang, Jiaming Liu, Yiren Song, Rui Wang, Hao Tang, Jinpeng Yu, Huaxia Li, Xu Tang, Yao Hu, Han Pan, Zhongliang Jing},<br>
+  &nbsp;&nbsp;booktitle={arXiv preprint arxiv:2312.16272},<br>
+  &nbsp;&nbsp;year={2023}<br>
+  } </code> 
+</div>
+
+<br><br>
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">                                                                                                                                   
+      <!-- <div class="content"> -->
+      The website template is taken from <a href="https://dreambooth.github.io/">dreambooth</a> project page.
+      <!-- </div> -->
+    </div>
+  </div>
+</footer>
+<br><br>
+
+</body>
+</html>
