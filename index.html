@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>SSR-Encoder</title>
+<title>Stable-Makeup</title>
 <link href="./assets/style.css" rel="stylesheet">
 <script type="text/javascript" src="./assets/jquery.mlens-1.0.min.js"></script> 
 <script type="text/javascript" src="./assets/jquery.js"></script>
@@ -28,12 +28,12 @@
   <span style="font-size: 24px">Shanghai Jiao Tong University, Xiaohongshu Inc., Peking University, Shenyang Institute of Automation Chinese Academy of Sciences, National University of Singapore
 </div>
   <br>
-  <img src="./assets/teaser.jpg" class="teaser-gif" style="width:100%;"><br>
+  <img src="./assets/sm_teaser.jpg" class="teaser-gif" style="width:100%;"><br>
   <h3 style="text-align:center; font-size: 16px;"><em>Our proposed framework, \textit{Stable-Makeup}, is a novel diffusion-based method for makeup transfer that can robustly transfer a diverse range of real-world makeup styles, from light to extremely heavy makeup.</em></h3>
     <font size="+2">
           <p style="text-align: center;">
-            <a href="https://arxiv.org/pdf/2312.16272.pdf" target="_blank">[Paper]</a> &nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="https://ssr-encoder.github.io" target="_blank">[Code(Comming Soon)]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="https://xiaojiu-z.github.io/Stable-Makeup.github.io/" target="_blank">[Paper]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="https://xiaojiu-z.github.io/Stable-Makeup.github.io/" target="_blank">[Code(Comming Soon)]</a> &nbsp;&nbsp;&nbsp;&nbsp;
           </p>
     </font>
 </div>
@@ -48,30 +48,38 @@
 </div>
 <div class="content">
   <h2>Approach</h2>
-<p>Selective subject-driven image generation aims to generate target subjects in a reference image with high fidelity and creative editability, guided by the user's specific queries (text or mask). To tackle this, we propose our SSR-Encoder, a specialized framework designed to integrate with any custom diffusion model without necessitating test-time fine-tuning. Given a query text-image pair, the SSR-Encoder employs a token-to-patch aligner to highlight the selective regions in the reference image by the query. Meanwhile, it extracts fine-grained details of the subject through the detail-preserving subject encoder, projecting multi-scale visual embeddings via the token-to-patch aligner. Then, we adopt subject-conditioned generation to generate specific subjects with high fidelity and creative editability. </p>
+<p> Our Stable-Makeup, which is built on a pre-trained diffusion model, and comprises three key components: the Detail-Preserving Makeup Encoder, Makeup Cross-attention Layers and the Content and Structural Control Modules. To preserve makeup details, we employ a multi-layer strategy in our D-P makeup encoder to encode the makeup reference image into multi-scale detail makeup embeddings. The content control module is designed to maintain pixel-level content consistency with source image. The structural control module is utilized to introduce facial structure, improving the consistency between the generated image and the facial structure of the source image. To achieve semantic alignment between the intermediate features of the Unet-encoded source image and the detail makeup embeddings, we extended the U-Net architecture by incorporating a makeup branch composed of cross-attention layers. Through our proposed content and structural decoupling training strategy, we can further maintain the facial structure of the source image. </p>
   <br>
-  <img class="summary-img" src="./assets/method.jpg" style="width:100%;"> <br>
+  <img class="summary-img" src="./assets/sm_method.jpg" style="width:100%;"> <br>
   <br>
-</div>
-<div class="content">
-  <h2>Results</h2>
-  <p>Results of SSR-Encoder in different generative capabilities. Our method supports two query modalities and is adaptable for a variety of tasks, including single- and multi-subject conditioned generation. Its versatility extends to integration with other customized models and compatibility with off-the-shelf ControlNets. </p>
-<img class="summary-img" src="./assets/images_01_7.jpg" style="width:100%;">
 </div>
 <div class="content">
   <h2>Visual Comparison</h2>
-  <p>Visual comparison with current makeup transfer methods.</p>
-  <br>
-  <img class="summary-img" src="./assets/compare.jpg" style="width:100%;"> <br>
+  <p> Qualitative comparison of different methods. Our results outperform other methods in terms of makeup detail transfer, ranging from light makeup to personalized heavy makeup.</p>
+<img class="summary-img" src="./assets/sm_com.jpg" style="width:100%;">
 </div>
 <div class="content">
   <h2>More Applications</h2>
-  <p>Select different subject from a single image for re-contextualization.</p>
+  <p>Our Stable-Makeup not only achieves unprecedented makeup transfer effects on real faces, but also enables various applications that were previously unattainable with traditional makeup transfer methods. For instance, our method can perform makeup transfer on cross-domain faces and guide text-to-image generation with reference makeup conditions to create creative artistic images. Our method can also perform makeup transfer on videos by utilizing effective multi-frame concatenation. Moreover, our approach supports other domain's reference makeup, such as animal-inspired subjects, animated characters and so on. providing a broader range of creative makeup options for real human faces.</p>
   <br>
-  <img class="summary-img" src="./assets/sup_ms1.jpg" style="width:100%;"> <br>
+  <img class="summary-img" src="./assets/sm_app.jpg" style="width:100%;"> <br>
+</div>
+<div class="content">
+  <h2>Ablation Study</h2>
+  <p>Qualitative ablation results. Figure (a) explores the classifier-free guidance scale. Figure (b) presents the ablation study of different training and inference settings.<p>
+  <br>
+  <img class="summary-img" src="./assets/sm_ab.jpg" style="width:100%;"> <br>
+</div>
+<div class="content">
+  <h2>More Results</h2>
+  <p>We also present a range of additional results that demonstrate the robustness and superiority of our approach.</p>
+  <br>
+  <img class="summary-img" src="./assets/sm_more.jpg" style="width:100%;"> <br>
 </div>
 
 </div>
+
+<!--
 <div class="content">
   <h2>BibTex</h2>
   <code> @article{zhang2023ssr,<br>
@@ -80,7 +88,7 @@
   &nbsp;&nbsp;booktitle={arXiv preprint arxiv:2312.16272},<br>
   &nbsp;&nbsp;year={2023}<br>
   } </code> 
-</div>
+</div> -->
 
 <br><br>
 <footer class="footer">
