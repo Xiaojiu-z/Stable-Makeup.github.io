@@ -1,1 +1,0 @@
-# Stable-Makeup.github.io
